@@ -3,6 +3,10 @@ import turtle
 
 
 class Point:
+    """
+    Class that contain x and y coordinates of a point and tells
+    the point falls in given rectangle or not.
+    """
 
     def __init__(self, x, y):
         self.x = x
@@ -14,6 +18,10 @@ class Point:
 
 
 class Rectangle:
+    """
+    Class that contains lower left point (point1) and upper right
+    (point2) of a rectangle and returns the area of rectangle.
+    """
 
     def __init__(self, point1, point2):
         self.point1 = point1
@@ -25,6 +33,9 @@ class Rectangle:
 
 
 class GuiRectangle(Rectangle):
+    """
+    Child of Rectangle class for a GUI representation of rectangle.
+    """
     def draw(self, canvas):
         canvas.penup()
         canvas.goto(self.point1.x, self.point1.y)
@@ -40,6 +51,7 @@ class GuiRectangle(Rectangle):
 
 
 class GuiPoint(Point):
+    """Child of Point class for GUI representation of point"""
 
     def draw(self, canvas, size=5, color='red'):
         canvas.penup()

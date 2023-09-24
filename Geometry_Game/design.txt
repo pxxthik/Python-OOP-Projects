@@ -1,0 +1,18 @@
+Title: Geometry Game
+
+Description: An app that generates a rectangle with random coordinates and asks user to guess any random
+point (x and y) and to guess the area of rectangle and tells how off the actual area of rectangle by our guess
+and also draw the rectangle and point in GUI.
+
+Objects: Point:
+            x
+            y
+            falls_in_rectangle(Rectangle)
+         Rectangle:
+            point1
+            point2
+            area()
+         GuiRectangle(Rectangle):
+            draw(canvas)
+         GuiPoint(Rectangle):
+            draw(canvas)
