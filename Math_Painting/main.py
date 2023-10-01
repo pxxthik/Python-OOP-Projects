@@ -1,60 +1,50 @@
-from PIL import Image
-import numpy as np
+from canvas import Canvas
+from shapes import Rectangle, Square
 
+# Get canvas width and height from the user
+canvas_width = int(input("Enter canvas width: "))
+canvas_height = int(input("Enter canvas height: "))
 
-class Canvas:
-    """Object where all shapes are going to be drawn"""
+# Make a dictionary of a color codes and prompts for color
+colors = {"white": (255, 255, 255), "black": (0, 0, 0)}
+canvas_color = input("Enter canvas color (white or black): ")
 
-    def __init__(self, height, width, color):
-        self.color = color
-        self.height = height
-        self.width = width
+# Create a canvas with the user data
+canvas = Canvas(height=canvas_height, width=canvas_width, color=colors[canvas_color])
 
-        # create a 3d numpy array of zeros
-        self.data = np.zeros((self.height, self.width, 3), dtype=np.uint8)
-        # change [0,0,0] with user given values for colors
-        self.data[:] = self.color
+while True:
+    shape_type = input("What do you like to draw? Enter quit to quit. ")
+    # Ask for rectangle data and create a rectangle if user entered 'rectangle'
+    if shape_type.lower() == 'rectangle':
+        rec_x = int(input("Enter x of the rectangle: "))
+        rec_y = int(input("Enter y of the rectangle: "))
+        rec_width = int(input("Enter the width of the rectangle: "))
+        rec_height = int(input("Enter the height of the rectangle: "))
 
-    def make(self, image_path):
-        """Converts the current array into image file"""
-        img = Image.fromarray(self.data, 'RGB')
-        img.save(image_path)
+        red = int(input("How much red should the rectangle have? "))
+        green = int(input("How much green? "))
+        blue = int(input("How much blue? "))
 
+        # Create the rectangle
+        r1 = Rectangle(x=rec_x, y=rec_y, height=rec_height, width=rec_width, color=(red, green, blue))
+        r1.draw(canvas)
 
-class Rectangle:
-    """A rectangle shape that can be drawn on a canvas object"""
+    # Ask for square data and create square if user entered 'squared'
+    elif shape_type.lower() == 'square':
+        sqr_x = int(input("Enter x of the square: "))
+        sqr_y = int(input("Enter y of the square: "))
+        sqr_side = int(input("Enter the side of the square: "))
 
-    def __init__(self, x, y, height, width, color):
-        self.x = x
-        self.y = y
-        self.height = height
-        self.width = width
-        self.color = color
+        red = int(input("How much red should the rectangle have? "))
+        green = int(input("How much green? "))
+        blue = int(input("How much blue? "))
 
-    def draw(self, canvas):
-        """Draws itself into the canvas"""
-        # Changes a slice of the array with new values
-        canvas.data[self.x: self.x + self.height, self.y: self.y + self.width] = self.color
+        # Create the square
+        s1 = Square(x=sqr_x, y=sqr_y, side=sqr_side, color=(red, green, blue))
+        s1.draw(canvas)
 
+    # Break the loop if user entered 'quit'
+    elif shape_type.lower() == 'quit':
+        break
 
-class Square:
-    """A square shape that can be drawn on a canvas object"""
-
-    def __init__(self, x, y, side, color):
-        self.x = x
-        self.y = y
-        self.side = side
-        self.color = color
-
-    def draw(self, canvas):
-        """Draws itself into the canvas"""
-        # Changes a slice of the array with new values
-        canvas.data[self.x: self.x + self.side, self.y: self.y + self.side] = self.color
-
-
-canvas = Canvas(height=20, width=30, color=(255, 255, 255))
-r1 = Rectangle(x=1, y=6, height=7, width=10, color=(100, 200, 125))
-r1.draw(canvas)
-s1 = Square(x=1, y=3, side=3, color=(0, 100, 222))
-s1.draw(canvas)
 canvas.make('canvas.png')
