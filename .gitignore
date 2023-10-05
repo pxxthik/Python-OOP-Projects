@@ -1,4 +1,9 @@
 venv
 __pycache__
+
 Flatmates_Bill/files/*.pdf
+
 Math_Painting/*.png
+
+Photo_Searcher/files/*.png
+Photo_Searcher/files/*.jpg
