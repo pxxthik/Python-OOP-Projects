@@ -13,7 +13,26 @@
             text: 'Capture'
             on_press: root.capture()
 
+<ImageScreen>:
+    GridLayout:
+        cols: 1
+        Image:
+            id: img
+        Button:
+            text: 'Create sharable link'
+        Label:
+            text: ''
+        GridLayout:
+            cols: 2
+            Button:
+                text: 'Copy link'
+            Button:
+                text: 'Open link'
+
 <RootWidget>:
     CameraScreen:
         id: camera_screen
         name: 'camera_screen'
+    ImageScreen:
+        id: image_screen
+        name: 'image_screen'
