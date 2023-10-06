@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
+from kivy.core.clipboard import Clipboard
 import time
 
 from filesharer import FileSharer
@@ -37,9 +38,14 @@ class ImageScreen(Screen):
         and inserts the linkin the Label widget"""
         filepath = App.get_running_app().root.ids.camera_screen.filepath
         file_sharer = FileSharer(filepath=filepath)
-        url = file_sharer.share()
-        self.ids.link.text = url
+        self.url = file_sharer.share()
+        self.ids.link.text = self.url
 
+    def copy_link(self):
+        try:
+            Clipboard.copy(self.url)
+        except:
+            self.ids.link.text = "Create a link first"
 
 
 class RootWidget(ScreenManager):
