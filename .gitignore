@@ -2,6 +2,7 @@ venv
 __pycache__
 
 Flatmates_Bill/files/*.pdf
+Flatmates_Bill/flatmates_bill/files/*.pdf
 
 Math_Painting/*.png
 
