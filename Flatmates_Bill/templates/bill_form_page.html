@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>The Bill Form</h2>
+    <p>Fill in the form and click the button to get the results</p>
+    <form>
+        {{bill_form.amount.label}} {{bill_form.amount}}
+        <br/>
+        {{bill_form.period.label}} {{bill_form.period}}
+        <hr/>
+
+        <p>First Flatmate</p>
+        {{bill_form.name1.label}} {{bill_form.name1}}<br/>
+        {{bill_form.days_in_house1.label}} {{bill_form.days_in_house1}}
+        <hr/>
+
+        <p>Second Flatmate</p>
+        {{bill_form.name2.label}} {{bill_form.name2}}<br/>
+        {{bill_form.days_in_house2.label}} {{bill_form.days_in_house2}}
+
+        <br/>
+
+        {{bill_form.button}}
+    </form>
+</body>
+</html>
