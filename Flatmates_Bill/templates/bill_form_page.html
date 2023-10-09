@@ -7,7 +7,7 @@
 <body>
     <h2>The Bill Form</h2>
     <p>Fill in the form and click the button to get the results</p>
-    <form>
+    <form action="/results" method="post">
         {{bill_form.amount.label}} {{bill_form.amount}}
         <br/>
         {{bill_form.period.label}} {{bill_form.period}}
