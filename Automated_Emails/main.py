@@ -1,13 +1,16 @@
 import yagmail
 import pandas
 from news import NewsFeed
+import datetime
 
 df = pandas.read_excel("people.xlsx")
 
 for index, row in df.iterrows():
+    today = datetime.datetime.now()
     news_feed = NewsFeed(interest=row['interest'],
-                         from_date="2023-10-14",
-                         to_date="2023-10-15")
+                         from_date=(today - datetime.timedelta(days=1)).strftime("%Y-%m-%d"),
+                         to_date=today.strftime("%Y-%m-%d"))
+
     email = yagmail.SMTP(user="pythonprocourse1@gmail.com",
                          password="python_pro_course_1")
     email.send(to=row['email'],
