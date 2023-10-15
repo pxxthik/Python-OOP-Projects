@@ -14,17 +14,25 @@ class NewsFeed:
         self.interest = interest
 
     def get(self):
-        url = f"{self.base_url}qInTitle={self.interest}&from={self.from_date}&to={self.to_date}&language={self.language}&apiKey={self.api_key}"
+        url = self._build_url()
 
-        response = requests.get(url)
-        content = response.json()
-        articles = content['articles']
+        articles = self._get_articles(url)
 
         email_body = ""
         for article in articles:
             email_body += article['title'] + "\n" + article['url'] + "\n\n"
 
         return email_body
+
+    def _get_articles(self, url):
+        response = requests.get(url)
+        content = response.json()
+        articles = content['articles']
+        return articles
+
+    def _build_url(self):
+        url = f"{self.base_url}qInTitle={self.interest}&from={self.from_date}&to={self.to_date}&language={self.language}&apiKey={self.api_key}"
+        return url
 
 
 if __name__ == "__main__":
