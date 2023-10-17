@@ -4,7 +4,8 @@ import justpy as jp
 @jp.SetRoute("/")
 def home():
     wp = jp.WebPage()
-    jp.Div(a=wp, text="Hello world!")
+    jp.Div(a=wp, text="Hello world!",
+           classes="text-green-900 bg-yellow-400 font-serif text-lg")
     jp.Div(a=wp, text="Hello again")
     return wp
 
