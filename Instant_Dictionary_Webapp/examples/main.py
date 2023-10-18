@@ -3,7 +3,7 @@ import justpy as jp
 
 @jp.SetRoute("/")
 def home():
-    wp = jp.WebPage()
+    wp = jp.QuasarPage(tailwind=True)
     div = jp.Div(a=wp, classes="bg-gray-200 h-screen")
     div1 = jp.Div(a=div, classes="grid grid-cols-3 gap-4 p-4")
     in_1 = jp.Input(a=div1, placeholder="Enter first value",
