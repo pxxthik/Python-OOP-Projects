@@ -1,4 +1,5 @@
 import justpy as jp
+import definition
 
 
 class Api:
@@ -9,7 +10,10 @@ class Api:
     def serve(cls, req):
         wp = jp.WebPage()
         word = req.query_params.get('w')
-        jp.Div(a=wp, text=word.title())
+
+        defined = definition.Definition(word).get()
+
+        wp.html = defined
         return wp
 
 
