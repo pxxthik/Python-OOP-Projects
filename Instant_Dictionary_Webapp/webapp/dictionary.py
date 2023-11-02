@@ -3,6 +3,8 @@ import definition
 
 from webapp import layout
 
+import requests
+
 
 class Dictionary:
     path = "/dictionary"
@@ -31,5 +33,6 @@ class Dictionary:
 
     @staticmethod
     def get_definition(widget, msg):
-        defined = definition.Definition(widget.value).get()
-        widget.output_div.text = " ".join(defined)
+        req = requests.get(f"http://127.0.0.1:8000/api?w={widget.value}")
+        data = req.json()
+        widget.output_div.text = " ".join(data['definition'])
